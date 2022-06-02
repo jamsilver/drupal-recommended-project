@@ -12,16 +12,80 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
+        },
+        {
+            "type": "package",
+            "package": {
+                "version": "9.0.2",
+                "name": "visjs/vis-network",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://unpkg.com/vis-network@9.1.2/dist/vis-network.min.js",
+                    "type": "file"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "d3/d3",
+                "version": "v3.5.17",
+                "type": "drupal-library",
+                "source": {
+                    "url": "https://github.com/d3/d3.git",
+                    "type": "git",
+                    "reference": "tags/v3.5.17"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "highlightjs/highlightjs",
+                "version": "11.2.0",
+                "type": "drupal-library",
+                "source": {
+                    "url": "https://github.com/highlightjs/highlight.js.git",
+                    "type": "git",
+                    "reference": "tags/11.2.0"
+                }
+            }
         }
     ],
     "require": {
         "composer/installers": "^1.9",
+        "cweagans/composer-patches": "^1.7",
+        "drupal/admin_toolbar": "^3.1",
+        "drupal/adminimal_admin_toolbar": "^1.11",
+        "drupal/coffee": "^1.2",
+        "drupal/config_split": "^1.8",
         "drupal/core-composer-scaffold": "^9.1",
         "drupal/core-project-message": "^9.1",
-        "drupal/core-recommended": "^9.1"
+        "drupal/core-recommended": "^9.1",
+        "drupal/module_filter": "^3.2",
+        "drupal/plugin": "^2.9",
+        "drupal/seckit": "^2.0",
+        "drupal/views_pretty_preview": "@dev",
+        "drush/drush": "^11.0",
+        "wikimedia/composer-merge-plugin": "^2.0"
     },
     "require-dev": {
-        "drupal/core-dev": "^9.1"
+        "d3/d3": "^3.5",
+        "drupal/breakpoints_ui": "^2.0",
+        "drupal/coder": "^8.3",
+        "drupal/config_update": "^1.7",
+        "drupal/core-dev": "^9.1",
+        "drupal/dependency_visualizer": "@dev",
+        "drupal/devel": "^4.1",
+        "drupal/devel_php": "^1.5",
+        "drupal/libraries_ui": "^2.0",
+        "drupal/module_builder": "^3.24",
+        "drupal/restui": "^1.20",
+        "drupal/twig_vardumper": "^3.0",
+        "highlightjs/highlightjs": "^11.2",
+        "phpspec/prophecy-phpunit": "^2",
+        "squizlabs/php_codesniffer": "^3.6",
+        "visjs/vis-network": "^9"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -29,7 +93,15 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "composer/installers": true,
+            "drupal/core-composer-scaffold": true,
+            "drupal/core-project-message": true,
+            "cweagans/composer-patches": true,
+            "wikimedia/composer-merge-plugin": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
     },
     "extra": {
         "drupal-scaffold": {
@@ -65,6 +137,11 @@
                 "      https://www.drupal.org/getting-involved",
                 "  * Remove the plugin that prints this message:",
                 "      composer remove drupal/core-project-message"
+            ]
+        },
+        "merge-plugin": {
+            "include": [
+                "web/modules/custom/*/composer.json"
             ]
         }
     }
